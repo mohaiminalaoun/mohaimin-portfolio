@@ -1,6 +1,7 @@
 import './main.css';
 import './index.css';
 import { useEffect, useState, type CSSProperties } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { siteContent } from './content';
 
 const navItems = [
@@ -240,6 +241,7 @@ export default function Main() {
         <div data-reveal><AboutSection /></div>
       </main>
       <ContactSection />
+      <Analytics />
     </div>
   );
 }
