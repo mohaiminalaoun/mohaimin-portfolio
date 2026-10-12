@@ -8,6 +8,7 @@ const navItems = [
   ['Projects', '#projects'],
   ['AI', '#ai'],
   ['Experience', '#experience'],
+  ['Looking', '#looking'],
   ['About', '#about']
 ] as const;
 
@@ -41,6 +42,7 @@ function Header() {
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          <a href="/mohaimin-al-aoun-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <span className="sr-only"> (opens in a new tab)</span></a>
           <a className="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
         </nav>
         <button
@@ -56,7 +58,8 @@ function Header() {
       </div>
       <nav id="mobile-navigation" className={`mobile-nav${menuOpen ? ' mobile-nav-open' : ''}`} aria-label="Mobile navigation" aria-hidden={!menuOpen}>
         {navItems.map(([label, href], index) => <a key={href} href={href} tabIndex={menuOpen ? 0 : -1} onClick={closeMenu} style={{ '--nav-i': index } as CSSProperties}>{label}<span>↗</span></a>)}
-        <a href="#contact" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu} style={{ '--nav-i': navItems.length } as CSSProperties}>Say hello<span>↗</span></a>
+        <a href="/mohaimin-al-aoun-resume.pdf" target="_blank" rel="noopener noreferrer" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu} style={{ '--nav-i': navItems.length } as CSSProperties}>Résumé<span>↗</span></a>
+        <a href="#contact" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu} style={{ '--nav-i': navItems.length + 1 } as CSSProperties}>Say hello<span>↗</span></a>
       </nav>
     </header>
   );
@@ -127,7 +130,7 @@ function ProjectCard({ project, index }: { project: typeof siteContent.projects[
       <div className="project-card-header"><span className="project-number">{project.number}<span> / 03</span></span><span className="project-kind">{project.kind}</span></div>
       <div className="project-card-body">
         <div className="project-copy"><h3>{project.name}<span className="project-title-mark" aria-hidden="true">↗</span></h3><p className="project-description">{project.description}</p><p className="project-detail">{project.detail}</p>
-          <div className="project-bottom"><span className="project-stack">{project.stack}</span>{project.href && <a className="project-link" href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel}<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>}{index === 0 && <a className="project-link" href="https://www.novagrapple.com/create" target="_blank" rel="noopener noreferrer">Try quick build<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>}</div>
+          <div className="project-bottom"><span className="project-stack">{project.stack}</span>{project.href && <a className="project-link" href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel}<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>}{project.repoHref && <a className="project-link" href={project.repoHref} target="_blank" rel="noopener noreferrer">View the repo<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>}{index === 0 && <a className="project-link" href="https://www.novagrapple.com/create" target="_blank" rel="noopener noreferrer">Try quick build<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>}</div>
         </div>
         <ProjectArtwork index={index} />
       </div>
@@ -161,8 +164,17 @@ function ProjectArtwork({ index }: { index: number }) {
     </div>
   );
   return (
-    <div className="project-art feedback-art" aria-hidden="true">
-      <div className="feedback-title">CUSTOMER<br />FEEDBACK <span>↘</span></div><div className="feedback-quote">“The setup was easy, but I had to call twice to understand the bill.”</div><div className="feedback-tags"><span className="tag-green">POSITIVE</span><span className="tag-coral">EFFORT</span><span className="tag-blue">BILLING</span></div><div className="feedback-sidebar"><i /><i /><i /><i /><i /></div><div className="feedback-dot" />
+    <div className="project-art qualtrics-art" role="img" aria-label="Dashboard migration flow: legacy dashboard, structured Claude plans, and streamed progress, with rebuild time reduced from about 30 minutes to 5">
+      <div className="qualtrics-art-head"><span>QUALTRICS / INTERNAL TOOL</span><span>01 — 03</span></div>
+      <div className="qualtrics-metric"><strong>~30 <i>→</i> ~5</strong><span>minutes per dashboard rebuild</span></div>
+      <div className="qualtrics-flow">
+        <div className="qualtrics-node"><small>INPUT</small><b>Legacy dashboard</b></div>
+        <span className="qualtrics-flow-arrow" aria-hidden="true">→</span>
+        <div className="qualtrics-node qualtrics-node-ai"><small>PLAN</small><b>Claude +<br />structured output</b></div>
+        <span className="qualtrics-flow-arrow" aria-hidden="true">→</span>
+        <div className="qualtrics-node"><small>REVIEW</small><b>Plans by widget</b></div>
+      </div>
+      <div className="qualtrics-stream"><span /> progress streams to the UI <b>SSE</b></div>
     </div>
   );
 }
@@ -189,11 +201,36 @@ function ExperienceSection() {
   );
 }
 
+function LookingSection() {
+  return (
+    <section className="looking-section section-wrap section-space" id="looking" aria-labelledby="looking-title">
+      <div className="section-heading-row">
+        <div><div className="eyebrow"><span className="section-index">04</span> WHAT I’M LOOKING FOR</div><h2 id="looking-title">Two kinds of<br /><span>good next steps.</span></h2></div>
+        <p className="section-lede">I’m open to engineering roles and to meeting people working on a product worth building.</p>
+      </div>
+      <div className="looking-grid">
+        <article className="looking-card looking-role">
+          <div className="looking-card-top"><span>01 / ENGINEERING</span><span aria-hidden="true">↗</span></div>
+          <h3>{siteContent.lookingFor.role.title}</h3>
+          <p>{siteContent.lookingFor.role.body}</p>
+          <a href="/mohaimin-al-aoun-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé (PDF) <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
+        </article>
+        <article className="looking-card looking-collaboration">
+          <div className="looking-card-top"><span>02 / BUILD TOGETHER</span><span aria-hidden="true">✳</span></div>
+          <h3>{siteContent.lookingFor.collaboration.title}</h3>
+          <p>{siteContent.lookingFor.collaboration.body}</p>
+          <a href={`mailto:${siteContent.contact.email}?subject=${encodeURIComponent('A product idea')}`}>Talk through an idea <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 function AboutSection() {
   return (
     <section className="about-section section-wrap section-space" id="about" aria-labelledby="about-title">
       <div className="about-badge"><span className="badge-orbit" aria-hidden="true">✳</span><span>PERSON<br />BEHIND<br />THE BUILDS</span></div>
-      <div className="about-copy"><div className="eyebrow"><span className="section-index">04</span> A LITTLE CONTEXT</div><h2 id="about-title">Hi, I’m Mohaimin.<br /><span>I like owning the details.</span></h2><div className="about-paragraphs">{siteContent.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="about-facts"><span>VANDERBILT CS ’17 · ENGINEERING TA</span><i>✳</i><span>RESTON, VA</span><i>✳</i><span>WHITE BELT, EMPHASIS ON WHITE BELT</span></div></div>
+      <div className="about-copy"><div className="eyebrow"><span className="section-index">05</span> A LITTLE CONTEXT</div><h2 id="about-title">Hi, I’m Mohaimin.<br /><span>I like owning the details.</span></h2><div className="about-paragraphs">{siteContent.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="about-facts"><span>VANDERBILT CS ’17 · ENGINEERING TA</span><i>✳</i><span>RESTON, VA</span><i>✳</i><span>WHITE BELT, EMPHASIS ON WHITE BELT</span></div></div>
     </section>
   );
 }
@@ -238,6 +275,7 @@ export default function Main() {
         <div data-reveal><ProjectsSection /></div>
         <div data-reveal><AiSection /></div>
         <div data-reveal><ExperienceSection /></div>
+        <div data-reveal><LookingSection /></div>
         <div data-reveal><AboutSection /></div>
       </main>
       <ContactSection />

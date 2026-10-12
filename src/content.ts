@@ -2,7 +2,7 @@ export const siteContent = {
   name: 'Mohaimin Al Aoun',
   role: 'UI-first senior full-stack engineer',
   intro:
-    'I start with the interface: what someone needs to see, understand, and do next. Then I follow the problem through APIs, data, deployment, and AI tools.',
+    'UI first. I start with what someone needs to see, understand, and do next, then follow the problem through APIs, data, deployment, and AI.',
   now: 'Current tabs: instructor websites, SAT answer explanations, and experiments with coding agents.',
   about: [
     'I started in frontend and kept moving closer to the product. I like being able to follow a problem from what someone needs, through the system behind it, to the moment the finished thing makes sense to use.',
@@ -10,7 +10,7 @@ export const siteContent = {
     'Outside work: Brazilian Jiu-Jitsu, Fantasy Premier League, and an unreasonable number of tabs about Sergio Ramos.'
   ],
   ai: {
-    intro: 'I use coding agents every day. They speed me up; they also make mistakes with a lot of confidence. I review the work and own what ships.',
+    intro: 'Agents make me faster. I still review the work, check the decisions, and own what ships.',
     practices: [
       {
         title: 'Put AI to work on a real task',
@@ -32,36 +32,39 @@ export const siteContent = {
       name: 'NovaGrapple',
       kind: 'Product · Full stack',
       description:
-        'A platform for Brazilian Jiu-Jitsu instructors to publish their own pages and receive private-lesson inquiries.',
+        'A platform for Brazilian Jiu-Jitsu instructors to publish a page of their own and receive private-lesson inquiries.',
       detail:
-        'Built a React/Rsbuild site builder with split-screen previews, five themes, and live profiles, alongside scheduling, booking, and instructor dashboards. Firebase auth and LLM bio generation support the instructor-to-student marketplace.',
+        'I built the React/Rsbuild site builder with a split-screen live preview and five themes, plus scheduling, booking, and instructor dashboards. Firebase auth and AI-assisted bios help instructors go from a blank page to a published profile.',
       stack: 'React · Rsbuild · Express · Prisma · Postgres · MongoDB · Firebase',
       href: 'https://www.novagrapple.com',
-      linkLabel: 'Open the live NovaGrapple site'
+      linkLabel: 'Open the live NovaGrapple site',
+      repoHref: undefined
     },
     {
       number: '02',
       name: 'ScoreBetter',
       kind: 'Product · Learning tools',
       description:
-        'SAT Reading and Writing practice that lets students commit, keep a choice open, or rule it out.',
+        'SAT Reading and Writing practice where students commit to an answer, keep a choice as “Maybe,” or eliminate it.',
       detail:
-        'The point is to show the thinking, not just flash right or wrong. Students see why a wrong choice is tempting, where it goes off track, and what makes the right answer fit.',
+        'It teaches the thinking, not just right or wrong. After answering, students can see why a wrong choice is tempting, where it goes off track, and what makes the right answer fit.',
       stack: 'React · NestJS · TypeScript',
-      href: 'https://github.com/mohaiminalaoun/scorebetter',
-      linkLabel: 'View the ScoreBetter repo'
+      href: 'https://scorebetter.vercel.app/',
+      linkLabel: 'Try ScoreBetter live',
+      repoHref: 'https://github.com/mohaiminalaoun/scorebetter'
     },
     {
       number: '03',
-      name: 'Qualtrics: BFF, AI tooling & UI platform',
-      kind: 'Systems · APIs · Reliability',
+      name: 'Qualtrics',
+      kind: 'AI tooling · BFF · UI platform',
       description:
-        'Built a Node/Express backend-for-frontend for 5+ APIs, plus a Claude-powered dashboard migration service that cut rebuild time from about 30 minutes to 5.',
+        'Dashboard migration, from about 30 minutes to 5. A Claude-powered service drafts per-widget plans so teams can review a migration before it reaches the dashboard.',
       detail:
-        'The BFF used parallel requests, JWT auth, retries, bounded timeouts, and graceful degradation, with 98% test coverage. It ran across Kubernetes datacenters with KEDA autoscaling, Prometheus metrics, and Vault secrets. I also architected three Module Federation entry points for multiple host apps.',
+        'Claude returned structured per-widget plans; server-sent events streamed progress to the UI. The migration won one of five Innovation Month awards, selected from 160 projects. Separately, I built a Node/Express BFF for 5+ APIs with parallel requests, JWT auth, bounded retries and timeouts, and graceful degradation (98% test coverage). It ran across Kubernetes datacenters with KEDA autoscaling, Prometheus metrics, and Vault secrets; I also architected three Module Federation entry points for host apps.',
       stack: 'Node · Express · React · TypeScript · SSE · FastAPI · Kubernetes',
       href: undefined,
-      linkLabel: undefined
+      linkLabel: undefined,
+      repoHref: undefined
     }
   ],
   tinkering: [
@@ -91,6 +94,16 @@ export const siteContent = {
       note: 'Built a full-stack image annotation platform used to create training data for object detection models.'
     }
   ],
+  lookingFor: {
+    role: {
+      title: 'A role close to the product',
+      body: 'Senior full-stack work where the interface, APIs, and data model are shaped together—and I can stay close to the people using what we build.'
+    },
+    collaboration: {
+      title: 'A real problem and someone to chase it with',
+      body: 'I’d like to meet designers, engineers, or operators with a sharp problem and an early product idea worth exploring together.'
+    }
+  },
   contact: {
     email: 'mohaiminx@gmail.com',
     github: 'https://github.com/mohaiminalaoun',
