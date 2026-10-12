@@ -111,12 +111,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--coral); outline
 .ai-section { position: relative; }
 .ai-section::before { position: absolute; z-index: -1; top: 110px; right: -8vw; width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, rgb(243 193 165 / 25%), transparent 70%); content: ""; }
 .build-loop { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
-.loop-track { position: absolute; top: 30px; right: 16%; left: 16%; display: flex; align-items: center; justify-content: space-around; }
+.loop-track { position: absolute; z-index: 0; top: 30px; right: 16%; left: 16%; display: flex; align-items: center; justify-content: space-around; pointer-events: none; }
 .loop-track::before { position: absolute; right: 0; left: 0; border-top: 1px dashed #a8b5aa; content: ""; }
 .loop-track span { z-index: 1; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px var(--paper); animation: pulse-dot 2.5s ease-in-out infinite; }
 .loop-track span:nth-child(2) { animation-delay: .3s; }.loop-track span:nth-child(3) { animation-delay: .6s; }.loop-track span:nth-child(4) { animation-delay: .9s; }.loop-track span:nth-child(5) { animation-delay: 1.2s; }
-.loop-card { position: relative; min-height: 256px; padding: 21px 22px 16px; border: 1px solid #d0d1c7; border-radius: 18px 18px 18px 6px; background: rgb(248 246 239 / 72%); transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background .25s ease; }
-.loop-card:hover { z-index: 1; transform: translateY(-9px) rotate(-1deg); background: #fbf9f2; box-shadow: 0 20px 35px rgb(37 55 48 / 10%); }
+.loop-card { position: relative; z-index: 1; min-height: 256px; padding: 21px 22px 16px; border: 1px solid #d0d1c7; border-radius: 18px 18px 18px 6px; background: #f8f6ef; transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background .25s ease; }
+.loop-card:hover { z-index: 2; transform: translateY(-9px) rotate(-1deg); background: #fbf9f2; box-shadow: 0 20px 35px rgb(37 55 48 / 10%); }
 .loop-card:nth-child(3):hover { transform: translateY(-9px) rotate(1deg); }
 .loop-card-top { display: flex; justify-content: space-between; align-items: center; min-height: 39px; }
 .loop-number, .project-number { color: #71807a; font: 10px var(--mono); letter-spacing: .04em; }
